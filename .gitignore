@@ -1,0 +1,11 @@
+vendor/
+node_modules/
+var/*
+!var/cache
+var/cache/*
+!var/cache/.gitkeep
+!var/logs
+var/logs/*
+!var/logs/.gitkeep
+Eau
+.idea/

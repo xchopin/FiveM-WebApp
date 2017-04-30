@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dictionary>
+    <languages>
+        <language>fr</language>
+        <language>en</language>
+        <language>it</language>
+        <language>de</language>
+        <language>es</language>f
+    </languages>
+    <quick-search>
+        <fr>Recherche rapide</fr>
+        <en>Quick search</en>
+    </quick-search>
+    <search-bar>
+        <fr>Recherchez une fiche produit par son numéro de référence</fr>
+        <en>Search a product by its ID</en>
+    </search-bar>
+    <markets>
+        <fr>Marchés disponibles</fr>
+        <en>Markets</en>
+    </markets>
+    <search-error>
+        <fr>Référence produit inconnu</fr>
+        <en>This product id does not exist</en>
+    </search-error>
+    <translation-succeeded>
+        <fr>Traduction effectuée</fr>
+        <en>Translation succeeded</en>
+    </translation-succeeded>
+    <datasheet>
+        <fr>Fiche produit</fr>
+        <en>Datasheet</en>
+    </datasheet>
+
+</dictionary>
