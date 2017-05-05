@@ -96,3 +96,10 @@
     border: none !important;
 }
 
+.author {
+    color: #6E6E6E;
+}
+
+.author a {
+    color: #8c8c8c;
+}
