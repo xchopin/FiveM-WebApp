@@ -103,3 +103,8 @@
 .author a {
     color: #8c8c8c;
 }
+
+.cover-img {
+    background-repeat: no-repeat  !important;
+    background-size: cover !important;
+}
