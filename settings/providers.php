@@ -22,11 +22,32 @@ use Silex\Provider\AssetServiceProvider;
 
 const ROOT_DIR = __DIR__ . '/../';
 
-
 $app->register(new VarDumperServiceProvider());
 
 $app->register(new MonologServiceProvider(), [
     'monolog.logfile' => ROOT_DIR . 'var/logs/dev.log'
+]);
+
+$app->register(new DoctrineServiceProvider(), [
+    'db.options' => [
+        'driver' =>  'pdo_mysql',
+        'user' => 'root',
+        'password' => '',
+        'dbname' => 'cana'
+    ]
+]);
+
+$app->register(new DoctrineOrmServiceProvider(), [
+    'orm.em.options' => [
+        'mappings' => [
+            [
+                'type' => 'annotation',
+                'namespace' => 'App\Entity',
+                'path' => ROOT_DIR . 'src/App/Entity',
+                'use_simple_annotation_reader' => false
+            ]
+        ]
+    ]
 ]);
 
 $app->register(new ServiceControllerServiceProvider());

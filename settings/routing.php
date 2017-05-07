@@ -1,7 +1,8 @@
 <?php
 
-$app->get('/', 'app.controller:home')->bind('home');
-$app->get('/authentication', 'auth.controller:authentication')->bind('authentication');
+$app->GET('/', 'app.controller:home')->bind('home');
 
-
-$app->get('/login', 'auth.controller:login')->bind('login');
+// --- AUTHENTICATION ---
+$app->GET('/authentication', 'auth.controller:signin')->bind('authentication');
+$app->GET('/signup', 'auth.controller:signup')->bind('signup');
+$app->POST('/create-account', 'auth.controller:signup')->bind('create-account');
