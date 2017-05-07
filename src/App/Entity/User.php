@@ -1,12 +1,135 @@
 <?php
+namespace App\Entity;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Created by PhpStorm.
- * User: Xavier
- * Date: 06/05/2017
- * Time: 15:31
+ * @ORM\Entity
+ * @ORM\Table(name="`user`")
  */
 class User
 {
+    /**
+     * @var int
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(name="id", type="integer")
+     */
+    protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=90)
+     */
+    protected $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=255)
+     */
+    protected $password;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="role", type="integer")
+     */
+     protected $role;
+
+
+    /**
+     * @param int $id
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param string $username
+     * @return $this
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param string $password
+     * @return $this
+     */
+
+    public function setPassword($password)
+    {
+        $this->password = $password;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param string $email
+     * @return $this
+     */
+
+    public function setEmail($email)
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param int $role
+     * @return $this
+     */
+
+    public function setRole($role)
+    {
+        $this->role = $role;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
 
 }
