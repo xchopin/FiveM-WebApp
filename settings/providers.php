@@ -49,6 +49,32 @@ $app->register(new DoctrineOrmServiceProvider(), [
         ]
     ]
 ]);
+$app->register(new SecurityServiceProvider(), [
+    'security.role_hierarchy' => [
+        'ROLE_ADMIN' => [
+            'ROLE_USER',
+            'ROLE_ALLOWED_TO_SWITCH'
+        ]
+    ],
+    'security.firewalls' => [
+        'login' => [
+            'pattern' => '^/login$'
+        ],
+        'secured' => [
+            'pattern' => '^/',
+            'form' => [
+                'login_path' => '/login',
+                'check_path' => '/login_check'
+            ],
+            'logout' => [
+                'logout_path' => '/logout',
+                'invalidate_session' => true
+            ],
+            'anonymous' => true
+        ]
+    ]
+]);
+
 
 $app->register(new ServiceControllerServiceProvider());
 
@@ -79,6 +105,18 @@ $app->register(new AssetServiceProvider(), [
     'assets.version' => 'v1'
 ]);
 
-/**$app->register(new WebProfilerServiceProvider(), [
+$app->register(new WebProfilerServiceProvider(), [
     'profiler.cache_dir' => ROOT_DIR . 'var/cache/profiler'
-]);*/
+]);
+
+$app->extend('twig', function($twig, $app) {
+    $twig->addFunction('isLogged', new Twig_SimpleFunction('isLogged', function() {
+        return isset($_SESSION['email']);
+    }));
+    $twig->addFunction('getUsername', new Twig_SimpleFunction('getUsername', function() {
+        if (isset($_SESSION['username']))
+            return $_SESSION['username'];
+    }));
+
+    return $twig;
+});

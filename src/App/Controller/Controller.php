@@ -30,6 +30,7 @@ class Controller
         $this->application = $app;
     }
 
+
     /**
      * Get Doctrine Entity Manager
      *

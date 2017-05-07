@@ -56,9 +56,17 @@
                 <a class="item">Boutique</a>
                 <a class="item">Règles</a>
                 <a class="item">Forum</a>
-                <div class="right item">
-                    <a href='{{ path('authentication') }}' class="ui inverted button">Connexion</a>
-                    <a href='{{ path('authentication') }}' class="ui orange inverted button">Inscription</a>
-                </div>
+                {% if isLogged() %}
+                    <div class="right item">
+                        <a class="inverted"> Bonjour {{ getUsername() }} </a> &nbsp; &nbsp;&nbsp;&nbsp;
+                        <a href="{{ path('disconnect') }}" > - &nbsp;&nbsp;&nbsp; Déconnexion </a>
+                    </div>
+                {% else %}
+                    <div class="right item">
+                        <a href='{{ path('authentication') }}' class="ui inverted button">Connexion</a>
+                        <a href='{{ path('authentication') }}' class="ui orange inverted button">Inscription</a>
+                    </div>
+                {% endif %}
+
             </div>
         </div>
