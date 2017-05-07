@@ -19,16 +19,17 @@
 
 <div class="ui middle aligned cover-img center aligned grid" style="background-image:url('{{ asset('img/authentication_background.jpg')}}')">
     <div class="column">
+        {{ include('_Shared/flash.twig') }}
         <h2 class="ui inverted image header">
             <img src="{{ asset('img/authentication_logo.png')}}" class="image">
             <div class="content">ESPACE D'AUTHENTIFICATION</div>
         </h2>
-        <form class="ui large form">
+        <form action='{{ path('signin') }}' method='POST' class="ui large form">
             <div class="ui stacked segment">
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="user icon"></i>
-                        <input required type="text" name="email" placeholder="Adresse email">
+                        <input required type="text" name="username" placeholder="Pseudo">
                     </div>
                 </div>
                 <div class="field">
@@ -57,10 +58,9 @@
     $('.ui.form').form({
       fields: {
         email: {
-          identifier  : 'email',
+          identifier  : 'pseudo',
           rules: [
-            { type   : 'empty', prompt : 'Merci d\'entrer une adresse email'},
-            { type   : 'email', prompt : 'Merci d\'entrer une adresse email valide' }
+            { type   : 'empty', prompt : 'Merci d\'entrer une adresse email'}
           ]
         },
         password: {
