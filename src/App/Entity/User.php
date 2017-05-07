@@ -27,6 +27,13 @@ class User
     /**
      * @var string
      *
+     * @ORM\Column(name="username", type="string", length=90)
+     */
+    protected $username;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="password", type="string", length=255)
      */
     protected $password;
@@ -34,10 +41,17 @@ class User
     /**
      * @var int
      *
-     * @ORM\Column(name="role", type="integer")
+     * @ORM\Column(name="role_id", type="integer")
      */
      protected $role;
 
+    public function __construct($username, $email, $password)
+    {
+        $this->username = $username;
+        $this->email = $email;
+        $this->password = $password;
+        $this->role = 0;
+    }
 
     /**
      * @param int $id
