@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Cana | Espace d'authentification</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<a href="{{ path('home') }}">
+    <i style='position:absolute; top:5%; left:2%; font-size: 3em;' class="inverted left arrow icon"></i>
+</a>
+
+<div class="ui middle aligned cover-img center aligned grid" style="background-image:url('{{ asset('img/authentication_background.jpg')}}')">
+    <div class="column">
+        <h2 class="ui inverted image header">
+            <img src="{{ asset('img/authentication_logo.png')}}" class="image"/>
+            <div class="content">INSCRIPTION</div>
+        </h2>
+        <form class="ui large form" method="POST" action="{{ path('create-account') }}">
+            <div class="ui stacked segment">
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        <input required type="text" name="username" placeholder="Votre pseudo">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="envelope icon"></i>
+                        <input required type="text" name="email" placeholder="Adresse e-mail">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input required type="password" id="#password" name="password" placeholder="Mot de passe">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input required type="password" name="password_confirm" placeholder="Confirmer votre mot de passe">
+                    </div>
+                </div>
+                <div class="ui fluid large green submit right labeled icon button">
+                    Inscription
+                    <i class="right check icon"></i>
+                </div>
+            </div>
+            <div class="ui error message"></div>
+        </form>
+
+        <div class="ui message">
+            <a href="{{ path('authentication') }}">Retour à l'espace de connexion</a>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+
+<script>
+  $().ready(function() {
+    $('.ui.form').form({
+      fields: {
+        username: {
+          identifier  : 'username',
+          rules: [
+            { type : 'empty', prompt : 'Merci d\'entrer un pseudo'},
+            { type : 'length[3]', prompt : 'Merci d\'entrer un pseudo ayant au moins 3 caractères'},
+            { type : 'regExp', value: /^\S+$/, prompt: 'Les espaces ne sont pas autorisés dans le pseudo'}
+          ]
+        },
+        email: {
+          identifier  : 'email',
+          rules: [
+            { type   : 'empty', prompt : 'Merci d\'entrer une adresse email'},
+            { type   : 'email', prompt : 'Merci d\'entrer une adresse email valide' }
+          ]
+        },
+        password: {
+          identifier : 'password',
+          rules: [
+            { type   : 'empty', prompt : 'Merci d\'entrer un mot de passe'},
+            { type   : 'length[6]', prompt : 'Merci d\'entrer un mot de passe ayant au moins 6 caractères'}
+          ]
+        },
+        password_confirm: {
+          identifier : 'password_confirm',
+          rules: [
+            { type   : 'match[password]', prompt : 'Mots de passe non identiques'},
+            { type   : 'empty', prompt : 'Merci de valider une seconde fois le mot de passe'},
+          ]
+        }
+      }
+    })
+  })
+</script>
+</body>
+
+</html>
