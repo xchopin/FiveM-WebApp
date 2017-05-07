@@ -1,0 +1,15 @@
+body > .grid {
+    min-height: 652px;
+    height: 100%;
+}
+
+@media screen and (min-height: 900px) {
+    body > .grid {
+        min-height: 1000px;
+        height: 100%;
+    }
+}
+
+.column {
+    max-width: 500px;
+}
