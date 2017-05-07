@@ -31,6 +31,16 @@ class Controller
     }
 
     /**
+     * Get Doctrine Entity Manager
+     *
+     * @return EntityManager
+     */
+    public function getEntityManager()
+    {
+        return $this->application['orm.em'];
+    }
+
+    /**
      * Get Form Factory
      *
      * @return FormFactory

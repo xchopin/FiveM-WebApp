@@ -5,25 +5,61 @@ namespace App\Controller;
 use App\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use Respect\Validation\Validator as v;
-use Respect\Validation\Exceptions\NestedValidationException;
+use Defuse\Crypto\Crypto;
 
 class AuthController extends Controller
 {
+
+    const SECRET_KEY = 'CHANGE_THIS_KEY';
+
+    /**
+     * Encrypt a plain text
+     *
+     * @param $plainText
+     * @return String
+     */
+    private function encrypt($plainText)
+    {
+        return Crypto::encryptWithPassword($plainText, self::SECRET_KEY, 0);
+    }
+
+    /**
+     * Decrypt a plain text
+     *
+     * @param $plainText
+     * @return String
+     */
+    private function decrypt($cipherText)
+    {
+        return Crypto::decryptWithPassword($cipherText, self::SECRET_KEY, 0);
+    }
 
     /**
      * Sign in function
      *
      * @return string
      */
-    public function signin()
+    public function signin(Request $request)
     {
-        return $this->render('authentication.twig');
+        if ($request->isMethod('GET'))
+            return $this->render('authentication.twig');
+
+        $user = $this->getEntityManager()->getRepository('App\Entity\User')->findOneByUsername($_POST['username']);
+        if ($user == null) {
+            $this->flash('error', 'Ce pseudo n\'existe pas');
+            return $this->render('authentication.twig');
+        }
+
+        if ($this->decrypt($user->getPassword()) !== $_POST['password']) {
+            $this->flash('error', 'Mot de passe incorrect');
+            return $this->render('authentication.twig');
+        }
+
+        $_SESSION['email'] = $user->getEmail();
+
+        return $this->redirect('home');
     }
 
-    private function encoder($string)
-    {
-
-    }
 
     /**
      * Sign up function
@@ -41,20 +77,25 @@ class AuthController extends Controller
             v::stringType()->notEmpty()->noWhiteSpace()->check($_POST['email']);
             v::stringType()->notEmpty()->noWhiteSpace()->length(6)->check($_POST['password']);
         } catch(\Exception $exception) {
-            $this->flash('danger', $exception->getMainMessage());
+            $this->flash('error', $exception->getMainMessage());
             return $this->render('signup.twig');
         }
 
-        $user = new User();
-        $user->setUserName($_POST['username']);
-        $user->setEmail($_POST['email']);
-        $user->setPassword($_POST['password']);
+        $isEmailUsed = $this->getEntityManager()->getRepository('App\Entity\User')->findByEmail($_POST['email']);
+        $isUsernameUsed = $this->getEntityManager()->getRepository('App\Entity\User')->findByUsername($_POST['username']);
 
-        $em = $this->getEntityManager();
-       // $em->persist($user);
-      //  $em->flush();
+        if ($isEmailUsed != null) {
+            $this->flash('error', 'Cette adresse email est déjà utilisée');
+        } else if ($isUsernameUsed != null) {
+            $this->flash('error', 'Ce pseudo est déjà utilisé');
+        } else {
+            $user = new User($_POST['username'], $_POST['email'], $this->encrypt($_POST['password']));
+            $this->getEntityManager()->persist($user);
+            $this->getEntityManager()->flush();
+            $this->flash('positive', 'Bienvenue sur Cana RP !');
+        }
+
+        return $this->redirect('authentication');
     }
-
-
 
 }
