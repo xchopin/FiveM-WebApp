@@ -108,3 +108,34 @@
     background-repeat: no-repeat  !important;
     background-size: cover !important;
 }
+
+.medium-banner {
+    background-repeat: no-repeat  !important;
+    background-size: cover !important;
+    height: 30%;
+}
+
+.medium-banner .container {
+    margin-top: 5em;
+}
+
+.medium-banner .player-details {
+    text-align:left;
+}
+
+p.player-details {
+   font-size: 1.3em;
+}
+
+img.player-photo {
+    height: 110px !important;
+    width: 110px !important;
+    position: fixed;
+    float: right;
+    margin-top: 4em;
+    margin-right: 5em;
+}
+
+.dashboard-action {
+   width: 20em;
+}

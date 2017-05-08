@@ -1,0 +1,55 @@
+{% extends '_Shared/layout.twig' %}
+
+{% block body %}
+    <div class="ui inverted vertical medium-banner center aligned segment"
+    style="background-image:url('img/dashboard_background.jpg');">
+        <img src="{{ asset('img/example.png') }}" class="ui medium circular image player-photo" alt="photo">
+        <div class="ui container">
+            <h1 class="player-details">RASNOV PATRIOTE</h1>
+            <p class="player-details">
+                Ambulancier de 42 ans à <i>Los Santos</i>
+            </p>
+        </div>
+
+    </div>
+    <div class="ui container">
+    <div class="ui grid">
+             <div class="nine wide column">
+                 <br>
+                 <i>
+                     <h1>Biographie</h1>
+                     Jean Bernard naît dans une famille d’ingénieurs. Son grand-père maternel, Émile Paraf, était polytechnicien ; son père, Paul Bernard (1876-1951) était Centralien, ainsi que Michel, son frère cadet. Pendant la Première Guerre mondiale, et tandis que son père est au front, il est envoyé en Bretagne. Jusqu’en 1918, il étudie à l’école communale de Couëron en Loire-Atlantique. Puis Jean Bernard fréquente le lycée Louis-le-Grand à Paris, où il acquiert une solide culture classique. Il lit beaucoup et commence à écrire. À 17 ans, il joue une pièce de Victor Hugo, Mangeront-ils ?. Ses partenaires sont Claude Lévi-Strauss et Pierre Dreyfus. À cette époque, il hésite encore entre la médecine et la littérature. Il finit par se décider pour la médecine : « La médecine me parut allier l’humanisme et mon goût pour les sciences. » (in C’est de l’homme qu’il s’agit, Odile Jacob, 1988).
+
+                     Il suit des cours à la Faculté des sciences de Paris, à la Faculté de médecine et enfin à l’Institut Pasteur.
+                 </i>
+
+             </div>
+             <div class="seven wide column ">
+                <br> <br> <br>
+                 <button class="ui right labeled dashboard-action icon button">
+                     <i class="camera icon"></i>
+                     Editer photo de profil
+                 </button> <br> <br>
+
+                 <button class="ui right labeled icon dashboard-action green button">
+                     <i class="write icon"></i>
+                     Editer biographie
+                 </button> <br> <br>
+
+                 <button class="ui right labeled dashboard-action red icon button">
+                     <i class="comment icon"></i>
+                    Contacter un modérateur
+                 </button> <br> <br>
+            </div>
+        <div class="ui sixteen wide column">
+            <hr>
+            <br>
+            <h1 class="ui center aligned grid">Casier judiciciaire</h1>
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

@@ -1,72 +1,11 @@
-<!--<nav class="ui borderless inverted top fixed menu">
-    <a href="" class="header item">Serveur GTA RP</a>
-    <div class="right menu">
-        {# if auth.check() %}
-            <div class="header item">{{ auth.user.username }}</div>
-            <div class="item">
-                <a href="{{ path('logout') }}" class="ui teal circular button">Logout</a>
-            </div>
-        {% else #}
-        <div class="item">
-            <a href="" class="ui circular button">Login</a>
-        </div>
-        <div class="item">
-            <a href="" class="ui teal circular button">Register</a>
-        </div>
-        {# endif #}
-    </div>
-</nav>-->
-
-<div class="ui large top fixed hidden menu">
+<div class="ui fixed inverted menu">
     <div class="ui container">
-        <a class="active item">Home</a>
-        <a class="item">Work</a>
-        <a class="item">Company</a>
-        <a class="item">Careers</a>
-        <div class="right menu">
-            <div class="item">
-                <a class="ui button">Log in</a>
-            </div>
-            <div class="item">
-                <a class="ui primary button">Sign Up</a>
-            </div>
-        </div>
+        <a href="#" class="header item">
+            <img class="logo" src="{{ asset('img/authentication_logo.png') }}">
+            myPanel <sup>&nbsp; v0.1</sup>
+        </a>
+        <a href="{{ path('home') }}" class="item">Accueil</a>
+        <a href="#" class="item">Boutique</a>
+        <a href="#" class="item">Forum</a>
     </div>
 </div>
-
-<!-- Sidebar Menu -->
-<div class="ui vertical inverted sidebar menu">
-    <a class="active item">Accueil</a>
-    <a class="item">Boutique</a>
-    <a class="item">Règles</a>
-    <a class="item">Forum</a>
-    <a class="item">Connexion</a>
-    <a class="item">Inscription</a>
-</div>
-
-<!-- Page Contents -->
-<div class="pusher">
-    <div class="ui inverted vertical masthead center aligned segment">
-        <div class="ui container">
-            <div class="ui large secondary inverted pointing menu no-border">
-                <a class="toc item">
-                    <i class="sidebar icon"></i>
-                </a>
-                <a class="active item">Accueil</a>
-                <a class="item">Boutique</a>
-                <a class="item">Règles</a>
-                <a class="item">Forum</a>
-                {% if isLogged() %}
-                    <div class="right item">
-                        <a class="inverted"> Bonjour {{ getUsername() }} </a> &nbsp; &nbsp;&nbsp;&nbsp;
-                        <a href="{{ path('disconnect') }}" > - &nbsp;&nbsp;&nbsp; Déconnexion </a>
-                    </div>
-                {% else %}
-                    <div class="right item">
-                        <a href='{{ path('authentication') }}' class="ui inverted button">Connexion</a>
-                        <a href='{{ path('authentication') }}' class="ui orange inverted button">Inscription</a>
-                    </div>
-                {% endif %}
-
-            </div>
-        </div>
