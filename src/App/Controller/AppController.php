@@ -9,4 +9,9 @@ class AppController extends Controller
     {
         return $this->render('home.twig');
     }
+
+    public function dashboard()
+    {
+        return $this->render('dashboard.twig');
+    }
 }
