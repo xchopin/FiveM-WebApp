@@ -1,5 +1,6 @@
 vendor/
 node_modules/
+settings/parameters.yml
 var/*
 !var/cache
 var/cache/*
@@ -7,5 +8,4 @@ var/cache/*
 !var/logs
 var/logs/*
 !var/logs/.gitkeep
-Eau
 .idea/
