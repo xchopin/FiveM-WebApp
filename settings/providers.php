@@ -28,13 +28,10 @@ $app->register(new MonologServiceProvider(), [
     'monolog.logfile' => ROOT_DIR . 'var/logs/dev.log'
 ]);
 
+$parameters = Yaml::parse(file_get_contents(__DIR__ . '/parameters.yml'))['parameters'];
+
 $app->register(new DoctrineServiceProvider(), [
-    'db.options' => [
-        'driver' =>  'pdo_mysql',
-        'user' => 'root',
-        'password' => '',
-        'dbname' => 'cana'
-    ]
+    'db.options' => $parameters
 ]);
 
 $app->register(new DoctrineOrmServiceProvider(), [
