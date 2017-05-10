@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Oxygen');
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
+
 .hidden.menu {
     display: none;
 }
@@ -113,14 +114,17 @@
     background-repeat: no-repeat  !important;
     background-size: cover !important;
     height: 30%;
+    min-height: 200px;
 }
 
 .medium-banner .container {
     margin-top: 5em;
+
 }
 
 .medium-banner .player-details {
     text-align:left;
+
 }
 
 p.player-details {
@@ -132,10 +136,49 @@ img.player-photo {
     width: 110px !important;
     position: fixed;
     float: right;
-    margin-top: 4em;
-    margin-right: 5em;
+    top: 50px;
+    right: 50px;
 }
 
 .dashboard-action {
-   width: 20em;
+    margin-left: 2em !important;
+    width: 20vw;
 }
+
+.casier-judiciare {
+    padding: 2em 0  !important;
+}
+
+.infraction {
+    height: 2em;
+    width: 5em;
+}
+
+
+
+/* Mobile */
+
+@media only screen and (max-width: 767px) {
+    [class*="mobile hidden"],
+    [class*="tablet only"]:not(.mobile),
+    [class*="computer only"]:not(.mobile),
+    [class*="large monitor only"]:not(.mobile),
+    [class*="widescreen monitor only"]:not(.mobile),
+    [class*="or lower hidden"] {
+        display: none !important;
+    }
+}
+
+/* Tablet / iPad Portrait */
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    [class*="mobile only"]:not(.tablet),
+    [class*="tablet hidden"],
+    [class*="computer only"]:not(.tablet),
+    [class*="large monitor only"]:not(.tablet),
+    [class*="widescreen monitor only"]:not(.tablet),
+    [class*="or lower hidden"]:not(.mobile) {
+        display: none !important;
+    }
+}
+
