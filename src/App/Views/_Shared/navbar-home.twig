@@ -23,7 +23,7 @@
                 <a class="item">Forum</a>
                 {% if isLogged() %}
                     <div class="right item">
-                        <a class="inverted"> Bonjour {{ getUsername() }} </a> &nbsp; &nbsp;&nbsp;&nbsp;
+                        <a href="{{ path('user-profile') }}" class="inverted"> Bonjour {{ getUsername() }} </a> &nbsp; &nbsp;&nbsp;&nbsp;
                         <a href="{{ path('disconnect') }}" > - &nbsp;&nbsp;&nbsp; Déconnexion </a>
                     </div>
                 {% else %}
