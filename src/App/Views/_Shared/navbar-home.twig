@@ -1,28 +1,12 @@
-<div class="ui large top fixed hidden menu">
-    <div class="ui container">
-        <a class="active item">Home</a>
-        <a class="item">Work</a>
-        <a class="item">Company</a>
-        <a class="item">Careers</a>
-        <div class="right menu">
-            <div class="item">
-                <a class="ui button">Log in</a>
-            </div>
-            <div class="item">
-                <a class="ui primary button">Sign Up</a>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Sidebar Menu -->
 <div class="ui vertical inverted sidebar menu">
-    <a class="active item">Accueil</a>
+    <a href='{{ path('home') }}' class="active item">Accueil</a>
     <a class="item">Boutique</a>
     <a class="item">Règles</a>
-    <a class="item">Forum</a>
-    <a class="item">Connexion</a>
-    <a class="item">Inscription</a>
+    <a href='http://forum.cana-rp.fr' class="item">Forum</a>
+    <a href='{{ path('authentication') }}' class="item">Connexion</a>
+    <a href='{{ path('signup') }}' class="item">Inscription</a>
 </div>
 
 <!-- Page Contents -->
@@ -43,9 +27,9 @@
                         <a href="{{ path('disconnect') }}" > - &nbsp;&nbsp;&nbsp; Déconnexion </a>
                     </div>
                 {% else %}
-                    <div class="right item">
+                    <div class="right item  mobile hidden">
                         <a href='{{ path('authentication') }}' class="ui inverted button">Connexion</a>
-                        <a href='{{ path('authentication') }}' class="ui orange inverted button">Inscription</a>
+                        <a href='{{ path('signup') }}' class="ui orange inverted button">Inscription</a>
                     </div>
                 {% endif %}
             </div>
