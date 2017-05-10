@@ -17,10 +17,10 @@
                 <a class="toc item">
                     <i class="sidebar icon"></i>
                 </a>
-                <a class="active item">Accueil</a>
+                <a href='{{ path('home') }}' class="active item">Accueil</a>
                 <a class="item">Boutique</a>
                 <a class="item">Règles</a>
-                <a class="item">Forum</a>
+                <a href='http://forum.cana-rp.fr' class="item">Forum</a>
                 {% if isLogged() %}
                     <div class="right item">
                         <a href="{{ path('user-profile') }}" class="inverted"> Bonjour {{ getUsername() }} </a> &nbsp; &nbsp;&nbsp;&nbsp;
